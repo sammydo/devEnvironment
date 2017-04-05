@@ -21,9 +21,9 @@ Vagrant.configure("2") do |config|
   config.vm.network "private_network" , ip: "192.168.10.100"
   config.hostsupdater.aliases = ["development.local"]
   # config.vm.synced_folder "../app", "/home/ubuntu/app"
-  config.vm.provision "shell", path: "provision.sh", privileged: false
-  config.vm.provision "shell", path: "production.sh", privileged: false
-  config.vm.provision "file", source: "./nginx.default" , destination: "nignx.default"
+  config.vm.provision "file", source: "nginx.default" , destination: "nginx.default"
+  config.vm.provision "shell", path: "provision.sh"
+  config.vm.provision "shell", path: "production.sh"
 
 
 

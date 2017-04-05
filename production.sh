@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo rm -rf /etc/nginx/sites-available/default
+sudo rm /etc/nginx/sites-available/default
 
 sudo cp nginx.default /etc/nginx/sites-available/default
 
