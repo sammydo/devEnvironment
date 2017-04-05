@@ -15,6 +15,6 @@ handler.on('error', function (err) {
 })
 
 handler.on('push', function (event) {
-  console.log('Received push notification',
+  console.log('Received push notification')
 
 })
