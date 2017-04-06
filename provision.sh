@@ -10,5 +10,5 @@ sudo apt-get install -y nodejs
 
 sudo npm install pm2 -g
 
-echo "eval `ssh-agent`" >> ~/.bashrc
+echo "eval `ssh-agent -s`" >> ~/.bashrc
 echo "ssh-add ~/.ssh/github" >> ~/.bashrc
