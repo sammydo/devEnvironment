@@ -2,5 +2,5 @@
 
 cd ~/app
 git pull
-npm install
+sudo npm install
 pm2 restart app
