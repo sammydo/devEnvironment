@@ -1,6 +1,6 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
-required_plugins = %w( vagrant-hostmanager )
+required_plugins = ["vagrant-hostmanager", "vagrant-berkshelf"]
 required_plugins.each do |plugin|
   system "vagrant plugin install #{plugin}" unless Vagrant.has_plugin? plugin
 end
@@ -21,10 +21,13 @@ Vagrant.configure("2") do |config|
   config.vm.network "private_network" , ip: "192.168.10.100"
   config.hostsupdater.aliases = ["development.local"]
   config.vm.synced_folder "../app", "/home/ubuntu/app"
-  config.vm.provision "file", source: "nginx.default" , destination: "nginx.default"
-  config.vm.provision "shell", path: "provision.sh"
-  config.vm.provision "shell", path: "production.sh"
-
+  # config.vm.provision "file", source: "nginx.default" , destination: "nginx.default"
+  # config.vm.provision "shell", path: "provision.sh"
+  # config.vm.provision "shell", path: "production.sh"
+  config.vm.provision "chef_solo" do |chef|
+  chef.cookbooks_path = ['cookbooks']
+  chef.run_list =['recipe[node-server::default]']
+end
 
 
 end
