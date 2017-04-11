@@ -27,4 +27,3 @@ template '/etc/nginx/sites-available/default' do
 end
 
 nodejs_npm 'pm2'
-nodejs 'npm'

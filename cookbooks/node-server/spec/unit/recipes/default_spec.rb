@@ -43,13 +43,13 @@ describe 'node-server::default' do
       expect(chef_run).to include_recipe 'nodejs'
     end
     it "should include pm2" do
-      expect(chef_run).to include_recipe 'pm2'
+      expect(chef_run).to install_nodejs_npm 'pm2'
     end
     it "should include npm" do
-      expect(chef_run).to include_recipe 'npm'
+      expect(chef_run).to include_recipe 'nodejs::npm'
     end
     it "should include git" do
-      expect(chef_run).to include_recipe 'git'
+      expect(chef_run).to include_recipe 'git::default'
     end
 
 
