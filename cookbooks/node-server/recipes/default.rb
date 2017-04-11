@@ -3,13 +3,7 @@
 # Recipe:: default
 #
 # Copyright:: 2017, The Authors, All Rights Reserved.
-
-include_recipe 'nodejs'
-
-include_recipe 'git'
-# include_recipe 'apt'
-
-
+include_recipe 'apt'
 
 package 'nginx' do
   action :install
@@ -26,4 +20,6 @@ template '/etc/nginx/sites-available/default' do
   notifies :reload, "service[nginx]"
 end
 
+include_recipe 'nodejs'
+include_recipe 'git'
 nodejs_npm 'pm2'
