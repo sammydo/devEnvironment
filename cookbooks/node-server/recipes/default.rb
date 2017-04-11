@@ -6,6 +6,11 @@
 
 include_recipe 'nodejs'
 
+include_recipe 'git'
+include_recipe 'apt'
+
+
+
 package 'nginx' do
   action :install
 end
@@ -20,3 +25,6 @@ template '/etc/nginx/sites-available/default' do
   source 'nginx.default.erb'
   notifies :reload, "service[nginx]"
 end
+
+nodejs_npm 'pm2'
+nodejs 'npm'
